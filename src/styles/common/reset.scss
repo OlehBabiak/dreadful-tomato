@@ -1,3 +1,5 @@
+@import 'src/styles/constants/index';
+
 *,
 *::after,
 *::before {
@@ -11,9 +13,15 @@
 
 body,
 html {
-  font-family: var(--regular);
   height: 100%;
-  background-color: var(--white);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, serif;
+  background-color: $main-black;
+  color: $white;
 }
 
 button,
