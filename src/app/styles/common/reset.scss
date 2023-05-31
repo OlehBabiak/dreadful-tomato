@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+}
+
+body,
+html {
+  font-family: var(--regular);
+  height: 100%;
+  background-color: var(--white);
+}
+
+button,
+a {
+  cursor: pointer;
+  transition: .3s;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                 supported by Chrome, Edge, Opera and Firefox */
+}
+
+input[type=number] {
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+app-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
