@@ -4,7 +4,8 @@ import {FooterComponent} from "./footer/footer.component";
 import {HeaderComponent} from "./header/header.component";
 import {FiltersComponent} from "./filters/filters.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {RouterModule} from "@angular/router";
+
 
 
 
@@ -13,7 +14,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule,
     ],
     exports: [
         FooterComponent,

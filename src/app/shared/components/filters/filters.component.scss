@@ -1,0 +1,29 @@
+@import 'src/styles/constants/index';
+@import 'src/styles/mixins/index';
+@import 'src/styles/common/index';
+
+.filter {
+  display: flex;
+  justify-content: center;
+  background-color: $red;
+  padding: 10px 0;
+
+  &__wrapper {
+    display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+   input:first-child {
+      grid-column: span 7;
+    }
+
+    input {
+      border: none;
+      border-radius: 15px;
+      padding: 5px 20px;
+      @include main-text(
+              $font-weight: $font-weight-500,
+      );
+    }
+  }
+}

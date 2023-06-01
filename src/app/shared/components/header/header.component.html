@@ -1,1 +1,34 @@
-<p>header works!</p>
+<header class="header">
+    <div class="header__wrapper app-wrapper">
+        <div class="header__navbar">
+            <div class="header__logo" style="cursor: pointer" routerLink="/">
+                <img src="assets/logo.png" alt="logo">
+            </div>
+            <div class="header__nav">
+                <ul>
+                    <ng-container *ngFor="let navItem of navItems">
+                        <li
+                                style="cursor: pointer"
+                                [routerLink]="navItem.routerLink"
+                                routerLinkActive="active"
+                        >
+                            <img [src]="navItem.icon" alt="icon">
+                            <a>{{navItem.title}}</a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+        <div class="header__actions">
+            <div class="header__filter">
+                <img src="assets/icon-filter.png" alt="filter">
+                <a>Filters</a>
+            </div>
+            <div class="header__auth">
+                <a>Login</a>
+                <img src="assets/icon-login.png" alt="login">
+            </div>
+                <button class="header__trial-button">Start your free trail</button>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,103 @@
+@import 'src/styles/constants/index';
+@import 'src/styles/mixins/index';
+@import 'src/styles/common/index';
+
+.header {
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    @include display($display: flex, $justify-content: space-between);
+  }
+
+  &__navbar {
+    display: flex;
+    height: 100%;
+  }
+
+  &__nav {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+      margin-left: 60px;
+    }
+
+    ul {
+      height: 100%;
+      @include media-breakpoint-up(md) {
+        display: flex;
+
+        a:hover {
+          color: $orange-dark;
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          padding: 0 15px 0 15px;
+          @include main-text(
+                  $font-size: $font-big,
+                  $font-weight: $font-weight-400,
+                  $line-height: 2,
+          )
+        }
+
+        a {
+          margin-left: 10px;
+          color: $white;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      padding: 0 15px 0 15px;
+      @include main-text(
+              $font-size: $font-medium-plus,
+              $font-weight: $font-weight-400,
+              $line-height: 2,
+      );
+
+      img:first-child {
+        margin-right: 10px;
+      }
+
+      img:last-child {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__filter, &__auth {
+    border-left: 1px solid $white;
+    border-right: 1px solid $white;
+  }
+
+  &__filter:hover, &__auth:hover {
+    background-color: $dark-gray;
+  }
+
+  &__trial-button {
+    background-color: $red;
+    padding: 5px 20px;
+    color: $white;
+    border: none;
+    border-radius: 15px;
+    margin-left: 20px;
+  }
+}
+
+.active {
+  background-color: $red;
+}

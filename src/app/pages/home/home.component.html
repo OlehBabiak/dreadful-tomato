@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="home">
+    <div class="home__image-wrapper">
+        <img src="assets/movies.png" alt="Movies image">
+        <div [ngStyle]="{'opacity': active === 'Movies' ? '0.8' : '1'}" class="home__action" (click)="onActiveToggle('Movies')"><p>Movies</p></div>
+    </div>
+    <div class="home__image-wrapper">
+        <img src="assets/series.png" alt="Series image">
+        <div [ngStyle]="{'opacity': active === 'Series' ? '0.8' : '1'}" class="home__action" (click)="onActiveToggle('Series')"><p>Series</p></div>
+    </div>
+</div>

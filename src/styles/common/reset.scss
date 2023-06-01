@@ -1,4 +1,5 @@
 @import 'src/styles/constants/index';
+@import 'src/styles/mixins/index';
 
 *,
 *::after,
@@ -19,7 +20,7 @@ html {
 }
 
 body {
-  font-family: Roboto, serif;
+  font-family: $main-text;
   background-color: $main-black;
   color: $white;
 }
@@ -50,7 +51,36 @@ input[type=number] {
 }
 
 app-root {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.app-wrapper {
+  @include media-breakpoint-between('min', 'xs') {
+    height: 100%;
+    width: 100%;
+  }
+  @include media-breakpoint-between('s', 's') {
+    height: 100%;
+    width: 100%;
+  }
+  @include media-breakpoint-between('md', 'md') {
+    height: 100%;
+    width: 720px;
+  }
+  @include media-breakpoint-between(lg, lg) {
+    height: 100%;
+    width: 960px;
+  }
+
+  @include media-breakpoint-between(lg1, lg1) {
+    height: 100%;
+    width: 1140px;
+  }
+
+  @include media-breakpoint-between(lg2, xlg) {
+    height: 100%;
+    width: 1320px;
+  }
 }
