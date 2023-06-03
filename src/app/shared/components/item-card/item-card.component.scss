@@ -1,0 +1,51 @@
+@import "src/styles/common/index";
+@import "src/styles/mixins/index";
+@import "src/styles/constants/index";
+
+.card {
+  overflow: hidden;
+  position: relative;
+
+
+  &__img {
+    img {
+      width: 300px;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  &__description {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    background-color: $graphite;
+    opacity: 0.8;
+    cursor: pointer;
+
+    h2 {
+      padding: 20px 5px;
+      @include main-text(
+              $font-size: $font-medium-plus,
+              $font-weight: normal,
+      )
+    }
+
+    p {
+      display: none;
+    }
+  }
+
+  &__description:hover {
+    top: 50%;
+    height: 50%;
+    bottom: 0;
+
+    p {
+      padding: 5px;
+      display: block;
+    }
+  }
+}
+
+

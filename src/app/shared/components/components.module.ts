@@ -5,12 +5,13 @@ import {HeaderComponent} from "./header/header.component";
 import {FiltersComponent} from "./filters/filters.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import { ItemCardComponent } from './item-card/item-card.component';
 
 
 
 
 @NgModule({
-    declarations: [FooterComponent, HeaderComponent, FiltersComponent],
+    declarations: [FooterComponent, HeaderComponent, FiltersComponent, ItemCardComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -22,7 +23,8 @@ import {RouterModule} from "@angular/router";
         HeaderComponent,
         FiltersComponent,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ItemCardComponent
     ]
 })
 export class ComponentsModule {

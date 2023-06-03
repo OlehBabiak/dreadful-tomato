@@ -12,3 +12,8 @@ export const  NAV_ITEM: HeaderNavItem[] = [
         icon: 'assets/icon-series.png'
     }
 ];
+
+export const ITEM_TYPES: {movies: string, series: string} = {
+    movies: 'movies',
+    series: 'series',
+}
