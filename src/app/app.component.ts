@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FilterService} from "./shared/components/filters/filter.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dreadful-tomato';
+  title: string = 'dreadful-tomato';
+
+  constructor(public filterService: FilterService) {
+  }
+
+    onCalendarOpen():void {
+      this.filterService.changeCalendarView(false)
+    }
 }

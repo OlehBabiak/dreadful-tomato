@@ -26,8 +26,8 @@ export class FiltersComponent implements OnInit {
 
     private createYearSelect() {
         const currentYear: number = new Date().getFullYear();
-        for (let year: number = 1950; year <= currentYear; year++) {
-            this.calendar.push(year.toString())
+        for (let year: number = currentYear; year >= 1950; year--) {
+            this.calendar.push(year.toString());
         }
     }
 
@@ -36,14 +36,14 @@ export class FiltersComponent implements OnInit {
         this.movieService.setSearchValue(searchValue);
     }
 
-    onCalendarOpen(): void {
-        this.filterService.changeCalendarView(true)
+    onCalendarOpen($event): void {
+        $event.stopPropagation();
+        this.filterService.changeCalendarView(true);
     }
 
     onYearChoose($event): void {
-        $event.stopPropagation()
+        $event.stopPropagation();
         const year: string = ($event.target as HTMLElement).innerText;
-        console.log(year)
         this.movieService.setDateValue(year);
         this.filterService.changeCalendarView(false);
     }
