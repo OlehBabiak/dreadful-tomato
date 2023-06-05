@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Entry, ResponseData} from "../shared/models/responseData";
 import {map} from "rxjs/operators";
 
@@ -8,6 +8,8 @@ import {map} from "rxjs/operators";
     providedIn: 'root'
 })
 export class MoviesService {
+    searchValue$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    dateValue$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
     constructor(private http: HttpClient) {
     }
@@ -30,5 +32,13 @@ export class MoviesService {
                     })
                 })
             )
+    }
+
+    setSearchValue(val: string): void {
+        this.searchValue$.next(val)
+    }
+
+    setDateValue(val: string): void {
+        this.dateValue$.next(val);
     }
 }

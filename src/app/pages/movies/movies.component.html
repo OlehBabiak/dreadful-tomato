@@ -1,7 +1,7 @@
 <h1 class="title">Popular Movies</h1>
 <div class="item-section">
     <ng-container *ngIf="movies$ | async as movies">
-        <div *ngFor="let movie of movies">
+        <div *ngFor="let movie of movies | search: searchValue | getDate: dateValue">
             <app-item-card [item]="movie"></app-item-card>
         </div>
 

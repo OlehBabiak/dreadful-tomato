@@ -10,20 +10,86 @@
 
   &__wrapper {
     display: grid;
-      grid-gap: 10px;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 
-   input:first-child {
-      grid-column: span 7;
+  &__input:first-child {
+    grid-column: span 7;
+  }
+
+  &__input {
+    border: none;
+    border-radius: 15px;
+    padding: 5px 20px;
+    background-color: white;
+    @include main-text(
+            $font-weight: $font-weight-500,
+    );
+  }
+
+  &__input--date {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &__input--date select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    border: none;
+    padding-right: 20px;
+    font-size: 14px;
+  }
+
+  &__input--date i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+  }
+
+  &__input--date > p {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: black;
+  }
+
+  &__calendar {
+    overflow-x: auto;
+    border-radius: 4px;
+    padding: 10px;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-auto-columns: minmax(20px, auto);
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+    height: 200px;
+
+    P {
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 5px;
     }
 
-    input {
-      border: none;
-      border-radius: 15px;
-      padding: 5px 20px;
-      @include main-text(
-              $font-weight: $font-weight-500,
-      );
+    span {
+      background-color: black;
+    }
+
+    p:hover {
+      background-color: $gray20;
+      transition: 0.5s;
     }
   }
 }

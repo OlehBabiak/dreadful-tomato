@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderNavItem} from '../../models/header-nav-item';
 import {NAV_ITEM} from '../../constants/constants'
-import {ActivatedRoute, Data, NavigationEnd, Params, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {FilterService} from "../filters/filter.service";
 
 @Component({
     selector: 'app-header',
@@ -11,13 +12,15 @@ import {ActivatedRoute, Data, NavigationEnd, Params, Router} from "@angular/rout
 export class HeaderComponent implements OnInit {
     navItems: HeaderNavItem[] = NAV_ITEM;
     currentRoute: string;
+    isFilterActive: boolean = true;
 
 
-    constructor(public router: Router) {
+    constructor(public router: Router, public filterService: FilterService) {
     }
 
     ngOnInit(): void {
-        this.router.events.subscribe((event: NavigationEnd) => {
+        this.filterService.isFilterActive$.subscribe((value: boolean) => this.isFilterActive = value);
+        this.router.events.subscribe((event: NavigationEnd): void => {
             if (event instanceof NavigationEnd) {
                 this.currentRoute = event.url;
             }
@@ -25,4 +28,7 @@ export class HeaderComponent implements OnInit {
 
     }
 
+    onFilterVisibleToggle(): void {
+        this.filterService.changeFilterView(!this.isFilterActive)
+    }
 }

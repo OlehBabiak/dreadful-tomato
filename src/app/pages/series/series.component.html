@@ -1,7 +1,7 @@
 <h1 class="title">Popular Series</h1>
 <div class="item-section">
     <ng-container *ngIf="series$ | async as series">
-        <div *ngFor="let episode of series">
+        <div *ngFor="let episode of series | search: searchValue | getDate: dateValue">
             <app-item-card [item]="episode"></app-item-card>
         </div>
     </ng-container>

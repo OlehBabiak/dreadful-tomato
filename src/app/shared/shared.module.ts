@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from "./components";
+import {PipesModule} from "./pipes";
 
 
-const exports = [ComponentsModule];
+const exports = [ComponentsModule, PipesModule];
 
 @NgModule({
     declarations: [],

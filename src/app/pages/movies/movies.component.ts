@@ -10,17 +10,33 @@ import {ITEM_TYPES} from "../../shared/constants/constants";
     styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-    movies$: Observable<Entry[]>
-    itemType: string = ITEM_TYPES.movies
+    movies$: Observable<Entry[]>;
+    itemType: string = ITEM_TYPES.movies;
+    pageSizeOptions = [10, 20, 60, 100];
+    length = 0;
+    pageSize = this.pageSizeOptions[0];
+    pageIndex = 0;
+    searchValue: string = '';
+    dateValue: string = '';
 
     constructor(public movieService: MoviesService) {
     }
 
     ngOnInit(): void {
-        this.getItems()
+        this.getItems();
+        this.getSearchValue();
+        this.getDateValue()
     }
 
-    private getItems() {
+    private getSearchValue(): void {
+        this.movieService.searchValue$.subscribe((value: string) => this.searchValue = value)
+    }
+
+    private getDateValue(): void {
+        this.movieService.dateValue$.subscribe((value: string) => this.dateValue = value)
+    }
+
+    private getItems(): void {
         this.movies$ = this.movieService.getItems(this.itemType)
     }
 }

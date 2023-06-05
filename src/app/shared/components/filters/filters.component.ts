@@ -1,15 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MoviesService} from "../../../services/movies.service";
+import {FilterService} from "./filter.service";
+
 
 @Component({
-  selector: 'app-filters',
-  templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+    selector: 'app-filters',
+    templateUrl: './filters.component.html',
+    styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent implements OnInit {
+    isCalendarOpen: boolean = false;
+    calendar: string[] = ['All'];
+    date: string = 'All';
+    isFilterActive: boolean;
 
-  constructor() { }
+    constructor(public filterService: FilterService, public movieService: MoviesService) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.createYearSelect();
+        this.filterService.isCalendarOpen$.subscribe((val: boolean) => this.isCalendarOpen = val);
+        this.movieService.dateValue$.subscribe((val: string) => this.date = val);
+        this.filterService.isFilterActive$.subscribe((val: boolean) => this.isFilterActive = val);
+    }
 
+    private createYearSelect() {
+        const currentYear: number = new Date().getFullYear();
+        for (let year: number = 1950; year <= currentYear; year++) {
+            this.calendar.push(year.toString())
+        }
+    }
+
+    searchChange($event: Event): void {
+        const searchValue: string = ($event.target as HTMLInputElement).value;
+        this.movieService.setSearchValue(searchValue);
+    }
+
+    onCalendarOpen(): void {
+        this.filterService.changeCalendarView(true)
+    }
+
+    onYearChoose($event): void {
+        $event.stopPropagation()
+        const year: string = ($event.target as HTMLElement).innerText;
+        console.log(year)
+        this.movieService.setDateValue(year);
+        this.filterService.changeCalendarView(false);
+    }
 }
