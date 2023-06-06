@@ -6,17 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  active: string = 'Movies';
-
   constructor() {}
 
   ngOnInit(): void {}
-
-  onActiveToggle(value: string): void {
-    if (this.active === 'Movies') {
-      this.active = value;
-    } else {
-      this.active = value;
-    }
-  }
 }

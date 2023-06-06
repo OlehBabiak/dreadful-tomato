@@ -1,71 +1,50 @@
-# Dear candidate
+# Introduction
+Thank you for the opportunity to participate in the practical test for the Angular Front-End Developer position at Got-IT. 
+I have implemented the Dreadful Tomato web app based on the provided requirements and design. 
+This README file provides an overview of the implementation and highlights some important aspects of the application.
 
-![](https://got-it.agency/wp-content/themes/gotit/assets/img/logo.svg)
+## Project Structure
+The project follows a standard Angular project structure with the following key components:
 
-We are excited to offer you an opportunity to join our team at Got-IT as an Angular Front-End Developer. 
-As a software development company, we are looking for highly skilled professionals with experience in developing 
-web applications based on Angular.
+* src/app/shared/components: Contains reusable components used throughout the application.
+* src/app/pages: Contains the three main pages of the application: Home, TV Shows, and Movies.
+* src/app/services: Contains the service responsible for fetching data from the provided API.
 
-This practical test is designed to assess your proficiency and expertise in Angular development. 
-The test will enable us to evaluate your coding skills, problem-solving abilities, and attention to detail. 
-This test is an essential part of our recruitment process, and it will help us to identify the most suitable 
-candidates to join our team.
+## Design and Styling
+The application adheres to the provided design guidelines and implements the styling using SCSS. 
+The SCSS files are organized and structured to ensure maintainability and reusability. 
+Global styles are defined in the src/styles folder, while component-specific styles are scoped to their respective components.
 
-Below is a description of the task that needs to be done
+## Data Retrieval
+The application fetches data from the provided API using the HttpClient module in Angular. 
+The MoviesService in the services folder handles the API requests and returns the required data to the respective components.
 
-# Dreadful Tomato
+## Reusable Components
+To promote reusability and maintainability, several components have been created:
 
-Dreadful Tomato is a new platform to find new movies and TV shows. The main objective is to
-help users to find information about their favourite TV shows and movies.
+* item-card-component: Represents a card that displays information about an episode or movie. 
+This component is used in the TV Shows and Movies pages to render the individual cards.
+* filters-component: Provides a search input field that allows users to filter TV shows and movies based on their title.
+* Implements a date picker to allow users to select the release year. This component is used in the TV Shows and Movies pages for filtering.
+Implements a date picker to allow users to select the release year. This component is used in the TV Shows and Movies pages for filtering.
 
-To do so, the company has to create a new web app that allow users do some fancy things.
+## Running the Application
+To run the application, follow these steps:
 
-## What do you have to do?
+* Clone the repository to your local machine.
+* Navigate to the project directory.
+* Install the dependencies by running npm install.
+* Start the development server by running npm start.
+* Open your browser and visit http://localhost:4200 to view the application.
 
-Dreadful Tomato needs to implement an awesome webpage where the users could view information
-about almost every new TV Shows and movie.
+## Conclusion
+I thoroughly enjoyed working on this practical test, and I appreciate the opportunity to showcase my skills as an Angular Front-End Developer. 
+I have implemented the Dreadful Tomato web app according to the provided requirements and design. 
+If you have any questions or need further clarification on any aspect of the implementation, please feel free to reach out to me.
 
-The Design team has sent us the new interface which has to be implemented. As you could see,
-there are three different pages.
+P.S. I created some css mixins for adaptive design, and partially used them in components.
+After clarifying with that to the need for adaptive design, I did not change code over to save time.
+This code does not affect the design as required.
 
-* The first page is a landing page where user could select whether she wants to see TV shows
-  or movies and some claims and logo of Dreadful Tomato
-* The second one is the list of TV shows. Here, the user could filter TV shows by title and
-  release year. In that page the user will see a list of card with the Title, description
-  and image from each TV show.
-* The third one is quite similar, but for the movies. The user could filter by title and
-  release year as well, to see a list of cards with the information of every movie.
-
-Here you could see the design of the 3 pages:
-
-Home page:
-
-![](images/Dreadful%20Tomato%20-%20HOME.png)
-
-TV shows page:
-
-![](images/Dreadful%20Tomato%20-%20POPULAR%20SERIES.png)
-
-Movies page:
-
-![](images/Dreadful%20Tomato%20-%20POPULAR%20MOVIES.png)
-
-## Technical Requirements
-
-Their CTO has no time to implement that, but she has defined some technical constraints:
-
-* This webapp has to be developed using Angular
-* Create reusable components
-* Create a **clean, maintainable and well-designed** code
-* Test your code until you are comfortable with that
-
-#### Considerations
-
-* To obtain the data of the TV Shows and Movies, you have to request [that file](https://static.rviewer.io/challenges/datasets/dreadful-tomatoes/data.json).
-* Use SCSS or SASS to manage your stylesheets
-* Use any component you want in the date picker to allow the user select the Year
-* Pay attention to hover effects (Home and Shows/Movies cards)
-
-To understand how you take decisions during the implementation, please write a README file
-explaining some of the most important parts of the application.
+#### Thank you for considering my application.
 

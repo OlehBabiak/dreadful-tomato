@@ -6,7 +6,6 @@ import { FilterService } from './filter.service';
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent implements OnInit {
   isCalendarOpen: boolean = false;
@@ -30,7 +29,7 @@ export class FiltersComponent implements OnInit {
     );
   }
 
-  private createYearSelect() {
+  private createYearSelect(): void {
     const currentYear: number = new Date().getFullYear();
     for (let year: number = currentYear; year >= 1950; year--) {
       this.calendar.push(year.toString());
