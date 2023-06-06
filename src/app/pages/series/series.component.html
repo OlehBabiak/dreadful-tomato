@@ -1,12 +1,14 @@
 <h1 class="title">Popular Series</h1>
 <div class="item-section">
     <ng-container *ngIf="series$ | async as series">
-        <div *ngFor="let episode of series | search: searchValue | getDate: dateValue">
+        <div *ngFor="let episode of series | search: searchValue | getDate: dateValue | pagination : pageIndex : pageSize">
             <app-item-card [item]="episode"></app-item-card>
         </div>
     </ng-container>
 </div>
-<!--<app-pagination-->
-<!--        [pageIndex]="pageIndex"-->
-<!--        (pageChanged)="onPageChange($event)"-->
-<!--&gt;-->
+<app-pagination
+        [pageIndex]="pageIndex"
+        (pageChanged)="onPageChange($event)"
+        [totalPages]="totalPages"
+>
+</app-pagination>

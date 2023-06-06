@@ -1,25 +1,40 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PaginationService} from "./pagination.service";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaginationComponent implements OnInit {
-  @Input() pageIndex: number;//current page
-  totalPages: number;
+export class PaginationComponent implements OnInit, OnChanges  {
+  @Input() pageIndex: number;
+  @Input() totalPages$: BehaviorSubject<number>;
+  @Input() totalPages: number;
   @Output() pageChanged: EventEmitter<number> = new EventEmitter();
 
   pages: number[] = []
 
-  constructor(private paginationService: PaginationService) { }
+  constructor() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.totalPages) {
+      const currentValue = changes.totalPages.currentValue;
+      this.createPageItems(currentValue)
+    }
+  }
+
 
   ngOnInit(): void {
-    this.paginationService.totalPages$.subscribe(value => {
-      this.totalPages = value;
-      this.createPageItems(value)
-    })
   }
 
   private createPageItems(val): void {

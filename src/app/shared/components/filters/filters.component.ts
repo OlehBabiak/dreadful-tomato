@@ -7,6 +7,7 @@ import {FilterService} from "./filter.service";
     selector: 'app-filters',
     templateUrl: './filters.component.html',
     styleUrls: ['./filters.component.scss'],
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent implements OnInit {
     isCalendarOpen: boolean = false;
