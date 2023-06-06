@@ -39,7 +39,6 @@ function decorateNgOnDestroy(ngOnDestroy: any, subscriptionsKey: any) {
         // Check if subscriptions exists
         if (this[subscriptionsKey] instanceof Subscription) {
             this[subscriptionsKey].unsubscribe();
-            console.log('unsubscribed');
         }
     };
 }
