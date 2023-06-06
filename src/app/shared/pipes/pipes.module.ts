@@ -12,10 +12,11 @@ import { GetDatePipe } from './getDate/get-date.pipe';
     SearchPipe,
     GetDatePipe
   ],
-  exports: [
-    SearchPipe,
-    GetDatePipe
-  ],
+    exports: [
+        SearchPipe,
+        GetDatePipe,
+        PaginationPipe
+    ],
   imports: [
     CommonModule
   ]

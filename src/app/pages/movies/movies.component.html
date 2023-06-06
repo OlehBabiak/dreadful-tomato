@@ -1,9 +1,15 @@
 <h1 class="title">Popular Movies</h1>
 <div class="item-section">
     <ng-container *ngIf="movies$ | async as movies">
-        <div *ngFor="let movie of movies | search: searchValue | getDate: dateValue">
+        <div *ngFor="let movie of movies | search: searchValue | getDate: dateValue | pagination : pageIndex : pageSize">
             <app-item-card [item]="movie"></app-item-card>
         </div>
 
     </ng-container>
 </div>
+<app-pagination
+        [pageIndex]="pageIndex"
+        [totalPages]="totalPages"
+        (pageChanged)="onPageChange($event)"
+>
+</app-pagination>

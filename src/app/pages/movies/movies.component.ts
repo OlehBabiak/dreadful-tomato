@@ -7,15 +7,18 @@ import {ITEM_TYPES} from "../../shared/constants/constants";
 @Component({
     selector: 'app-movies',
     templateUrl: './movies.component.html',
-    styleUrls: ['./movies.component.scss']
+    styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit {
     movies$: Observable<Entry[]>;
     itemType: string = ITEM_TYPES.movies;
-    pageSizeOptions = [10, 20, 60, 100];
-    length = 0;
-    pageSize = this.pageSizeOptions[0];
-    pageIndex = 0;
+
+    pageSizeOptions: number[] = [5, 10, 20, 50];
+    pageSize: number = this.pageSizeOptions[0];
+    pageIndex: number = 0;
+    totalPages: number;
+
+
     searchValue: string = '';
     dateValue: string = '';
 
@@ -38,5 +41,9 @@ export class MoviesComponent implements OnInit {
 
     private getItems(): void {
         this.movies$ = this.movieService.getItems(this.itemType)
+    }
+
+    onPageChange($event: number) {
+        this.pageIndex = $event
     }
 }

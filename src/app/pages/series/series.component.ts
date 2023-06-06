@@ -21,7 +21,7 @@ export class SeriesComponent implements OnInit {
     ngOnInit(): void {
         this.getItems();
         this.getSearchValue();
-        this.getDateValue()
+        this.getDateValue();
     }
 
     private getSearchValue(): void {

@@ -6,12 +6,13 @@ import {FiltersComponent} from "./filters/filters.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import { ItemCardComponent } from './item-card/item-card.component';
+import {PaginationComponent} from "./pagination/pagination.component";
 
 
 
 
 @NgModule({
-    declarations: [FooterComponent, HeaderComponent, FiltersComponent, ItemCardComponent],
+    declarations: [FooterComponent, HeaderComponent, FiltersComponent, ItemCardComponent, PaginationComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -24,7 +25,8 @@ import { ItemCardComponent } from './item-card/item-card.component';
         FiltersComponent,
         FormsModule,
         ReactiveFormsModule,
-        ItemCardComponent
+        ItemCardComponent,
+        PaginationComponent
     ]
 })
 export class ComponentsModule {
