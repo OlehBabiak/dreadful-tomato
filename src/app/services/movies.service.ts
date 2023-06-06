@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Entry, ResponseData } from '../shared/models/responseData';
 import { map } from 'rxjs/operators';
+import {Api} from "../shared/models/api.model";
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class MoviesService {
   private getMovies(): Observable<Entry[]> {
     return this.http
       .get<ResponseData>(
-        'https://static.rviewer.io/challenges/datasets/dreadful-tomatoes/data.json'
+        Api.items
       )
       .pipe(
         map((data: ResponseData) => {
