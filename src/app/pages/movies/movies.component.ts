@@ -3,6 +3,8 @@ import {MoviesService} from "../../services/movies.service";
 import {Observable} from "rxjs";
 import {Entry} from "../../shared/models/responseData";
 import {ITEM_TYPES} from "../../shared/constants/constants";
+import {tap} from "rxjs/operators";
+import {PaginationService} from "../../shared/components/pagination/pagination.service";
 
 @Component({
     selector: 'app-movies',
@@ -12,17 +14,12 @@ import {ITEM_TYPES} from "../../shared/constants/constants";
 export class MoviesComponent implements OnInit {
     movies$: Observable<Entry[]>;
     itemType: string = ITEM_TYPES.movies;
-
-    pageSizeOptions: number[] = [5, 10, 20, 50];
-    pageSize: number = this.pageSizeOptions[0];
+    pageSize: number = 5;
     pageIndex: number = 0;
-    totalPages: number;
-
-
     searchValue: string = '';
     dateValue: string = '';
 
-    constructor(public movieService: MoviesService) {
+    constructor(private movieService: MoviesService, private paginationService: PaginationService) {
     }
 
     ngOnInit(): void {
@@ -40,7 +37,16 @@ export class MoviesComponent implements OnInit {
     }
 
     private getItems(): void {
-        this.movies$ = this.movieService.getItems(this.itemType)
+        this.movies$ = this.movieService.getItems(this.itemType).pipe(
+            tap((val: Entry[]) => {
+                if(val.length % this.pageSize === 0) {
+                    this.paginationService.setTotalPagesAmount(Math.floor(val.length / this.pageSize))
+                } else {
+                    this.paginationService.setTotalPagesAmount(Math.ceil(val.length / this.pageSize))
+                }
+                return val;
+            })
+        );
     }
 
     onPageChange($event: number) {

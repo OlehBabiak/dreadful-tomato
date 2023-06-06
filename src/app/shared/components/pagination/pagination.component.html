@@ -1,20 +1,20 @@
 <div class="pagination">
     <div class="pagination__pages">
-        <button [disabled]="pageIndex === 1" (click)="onPreviousPage()">
+        <button [ngClass]="pageIndex === 0 ? 'disabled' : ''" (click)="onPreviousPage()">
             <img src="assets/angle-left-solid.svg" alt="left arrow">
         </button>
         <div class="pages">
             <div (click)="onPageSelect($event)"
-                    class="pages__item box"
-                    *ngFor="let page of pages"
-                    [attr.data-page]="page"
+                 class="pages__item box"
+                 *ngFor="let page of pages"
+                 [ngClass]="pageIndex+1 === page ? 'checked' : ''"
+                 [attr.data-page]="page"
             >
                 {{ page }}
             </div>
         </div>
-        <button [disabled]="pageIndex === totalPages" (click)="onNextPage()">
+        <button [ngClass]="pageIndex === totalPages-1 ? 'disabled' : ''" (click)="onNextPage()">
             <img src="assets/angle-right-solid.svg" alt="right arrow">
         </button>
     </div>
-
 </div>
