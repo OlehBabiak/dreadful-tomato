@@ -1,21 +1,24 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterService {
-    isCalendarOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    isFilterActive$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isCalendarOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  isFilterActive$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
-    constructor() {
-    }
+  constructor() {}
 
-    changeCalendarView(state: boolean) {
-        this.isCalendarOpen$.next(state)
-    }
+  changeCalendarView(state: boolean) {
+    this.isCalendarOpen$.next(state);
+  }
 
-    changeFilterView(state: boolean): void {
-        this.isFilterActive$.next(state)
-    }
+  changeFilterView(state: boolean): void {
+    this.isFilterActive$.next(state);
+  }
 }

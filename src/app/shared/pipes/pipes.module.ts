@@ -4,21 +4,9 @@ import { PaginationPipe } from './pagination/pagination.pipe';
 import { SearchPipe } from './search/search.pipe';
 import { GetDatePipe } from './getDate/get-date.pipe';
 
-
-
 @NgModule({
-  declarations: [
-    PaginationPipe,
-    SearchPipe,
-    GetDatePipe
-  ],
-    exports: [
-        SearchPipe,
-        GetDatePipe,
-        PaginationPipe
-    ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [PaginationPipe, SearchPipe, GetDatePipe],
+  exports: [SearchPipe, GetDatePipe, PaginationPipe],
+  imports: [CommonModule],
 })
-export class PipesModule { }
+export class PipesModule {}

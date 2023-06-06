@@ -1,11 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Entry} from "../../models/responseData";
+import { Entry } from '../../models/responseData';
 
 @Pipe({
-  name: 'pagination'
+  name: 'pagination',
 })
 export class PaginationPipe implements PipeTransform {
-
   transform(entries: Entry[], ...args: number[]): Entry[] {
     if (entries) {
       const arr: Entry[] = [...entries];
