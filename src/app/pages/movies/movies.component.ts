@@ -17,12 +17,12 @@ export class MoviesComponent implements OnInit {
   private getSearchValueSubs: Subscription = new Subscription();
   private getDateValueSubs: Subscription = new Subscription();
   movies$: Observable<Entry[]>;
-  totalPages: number = 0;
+  totalPages = 0;
   itemType: string = ITEM_TYPES.movies;
-  pageSize: number = 8;
-  pageIndex: number = 0;
-  searchValue: string = '';
-  dateValue: string = '';
+  pageSize = 8;
+  pageIndex = 0;
+  searchValue = '';
+  dateValue = '';
 
   constructor(private movieService: MoviesService) {}
 

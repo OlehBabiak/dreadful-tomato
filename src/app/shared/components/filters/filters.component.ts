@@ -8,9 +8,9 @@ import { FilterService } from './filter.service';
   styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent implements OnInit {
-  isCalendarOpen: boolean = false;
+  isCalendarOpen = false;
   calendar: string[] = ['All'];
-  date: string = 'All';
+  date = 'All';
   isFilterActive: boolean;
 
   constructor(
@@ -41,12 +41,12 @@ export class FiltersComponent implements OnInit {
     this.movieService.setSearchValue(searchValue);
   }
 
-  onCalendarOpen($event): void {
+  onCalendarOpen($event: Event): void {
     $event.stopPropagation();
     this.filterService.changeCalendarView(true);
   }
 
-  onYearChoose($event): void {
+  onYearChoose($event: Event): void {
     $event.stopPropagation();
     const year: string = ($event.target as HTMLElement).innerText;
     this.movieService.setDateValue(year);

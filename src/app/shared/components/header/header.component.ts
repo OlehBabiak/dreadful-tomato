@@ -12,7 +12,7 @@ import { FilterService } from '../filters/filter.service';
 export class HeaderComponent implements OnInit {
   navItems: HeaderNavItem[] = NAV_ITEM;
   currentRoute: string;
-  isFilterActive: boolean = true;
+  isFilterActive = true;
 
   constructor(public router: Router, public filterService: FilterService) {}
 

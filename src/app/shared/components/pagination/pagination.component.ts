@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -16,27 +15,22 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./pagination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaginationComponent implements OnInit, OnChanges {
+export class PaginationComponent implements OnChanges {
   @Input() pageIndex: number;
   @Input() totalPages$: BehaviorSubject<number>;
   @Input() totalPages: number;
   @Output() pageChanged: EventEmitter<number> = new EventEmitter();
-
   pages: number[] = [];
 
-  constructor() {}
-
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.totalPages) {
       const currentValue = changes.totalPages.currentValue;
       this.createPageItems(currentValue);
     }
   }
 
-  ngOnInit(): void {}
-
   private createPageItems(val): void {
-    for (let i: number = 1; i <= val; i++) {
+    for (let i = 1; i <= val; i++) {
       this.pages.push(i);
     }
   }
@@ -53,7 +47,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  onPageSelect($event): void {
+  onPageSelect($event: Event): void {
     const page: number = +($event.target as HTMLElement).innerText;
     this.pageChanged.emit(page - 1);
   }

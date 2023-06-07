@@ -12,8 +12,6 @@ export class FilterService {
     false
   );
 
-  constructor() {}
-
   changeCalendarView(state: boolean): void {
     this.isCalendarOpen$.next(state);
   }
