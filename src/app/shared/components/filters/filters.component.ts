@@ -32,9 +32,10 @@ export class FiltersComponent implements OnInit {
       this.cdr.markForCheck();
     });
     this.movieService.dateValue$.subscribe((val: string) => (this.date = val));
-    this.filterService.isFilterActive$.subscribe(
-      (val: boolean) => (this.isFilterActive = val)
-    );
+    this.filterService.isFilterActive$.subscribe((val: boolean) => {
+      this.isFilterActive = val;
+      this.cdr.markForCheck();
+    });
   }
 
   private createYearSelect(): void {
