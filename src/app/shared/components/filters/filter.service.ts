@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class FilterService {
   isFilterActive$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+  private cdr: ChangeDetectorRef;
 
   changeCalendarView(state: boolean): void {
     this.isCalendarOpen$.next(state);
@@ -18,5 +19,6 @@ export class FilterService {
 
   changeFilterView(state: boolean): void {
     this.isFilterActive$.next(state);
+    this.cdr.markForCheck();
   }
 }

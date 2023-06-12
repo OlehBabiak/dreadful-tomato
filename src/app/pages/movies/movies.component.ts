@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Observable, Subscription } from 'rxjs';
 import { Entry } from '../../shared/models/responseData';
@@ -12,6 +17,7 @@ import { AutoUnsubscribe } from '../../shared/utils/decorators';
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoviesComponent implements OnInit {
   private getSearchValueSubs: Subscription = new Subscription();
@@ -24,7 +30,10 @@ export class MoviesComponent implements OnInit {
   searchValue = '';
   dateValue = '';
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private movieService: MoviesService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.getItems();
@@ -34,17 +43,19 @@ export class MoviesComponent implements OnInit {
 
   private getSearchValue(): void {
     this.getSearchValueSubs.add(
-      this.movieService.searchValue$.subscribe(
-        (value: string) => (this.searchValue = value)
-      )
+      this.movieService.searchValue$.subscribe((value: string): void => {
+        this.searchValue = value;
+        this.cdr.markForCheck();
+      })
     );
   }
 
   private getDateValue(): void {
     this.getDateValueSubs.add(
-      this.movieService.dateValue$.subscribe(
-        (value: string) => (this.dateValue = value)
-      )
+      this.movieService.dateValue$.subscribe((value: string): void => {
+        this.dateValue = value;
+        this.cdr.markForCheck();
+      })
     );
   }
 

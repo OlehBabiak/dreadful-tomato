@@ -7,7 +7,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-pagination',
@@ -17,7 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PaginationComponent implements OnChanges {
   @Input() pageIndex: number;
-  @Input() totalPages$: BehaviorSubject<number>;
+  // @Input() totalPages$: BehaviorSubject<number>;
   @Input() totalPages: number;
   @Output() pageChanged: EventEmitter<number> = new EventEmitter();
   pages: number[] = [];

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { FilterService } from './filter.service';
 
@@ -6,6 +11,7 @@ import { FilterService } from './filter.service';
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent implements OnInit {
   isCalendarOpen = false;
@@ -15,14 +21,16 @@ export class FiltersComponent implements OnInit {
 
   constructor(
     public filterService: FilterService,
-    public movieService: MoviesService
+    public movieService: MoviesService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.createYearSelect();
-    this.filterService.isCalendarOpen$.subscribe(
-      (val: boolean) => (this.isCalendarOpen = val)
-    );
+    this.filterService.isCalendarOpen$.subscribe((val: boolean) => {
+      this.isCalendarOpen = val;
+      this.cdr.markForCheck();
+    });
     this.movieService.dateValue$.subscribe((val: string) => (this.date = val));
     this.filterService.isFilterActive$.subscribe(
       (val: boolean) => (this.isFilterActive = val)
